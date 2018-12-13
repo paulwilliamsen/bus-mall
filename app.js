@@ -131,14 +131,33 @@ Pictures.imageTwo.addEventListener('click', Pictures.renderPictures);
 Pictures.imageThree.addEventListener('click', Pictures.renderPictures);
 
 
+
+
+Pictures.renderResults = function() {
+  var header = document.getElementById('results-header');
+  var ulEl = document.getElementById('results');
+  header.textContent = 'Results';
+
+  for (var i = 0; i < Pictures.allImagesArray.length; i++) {
+    var thisImage = Pictures.allImagesArray[i];
+    var liEl = document.createElement('li');
+    ulEl.appendChild(liEl);
+    Pictures.allVotes.push(thisImage);
+  }
+
+
+};
+
+
+
+
 Pictures.displayChart = function () {
   new Chart(Pictures.chart, {
     type: 'horizontalBar',
     data: {
       labels: Pictures.allNames,
       datasets: [{
-        label: 'Votes Per Image',
-        fillstyle: 
+        label: 'Votes Per Image', 
         data: Pictures.allVotes,
         backgroundColor: ['#126fe7', '#2470dd', '#3771d2', '#4973c7', '#5b74bd', '#6d75b3', '#8077a8', '#92789e', '#a47993', '#b67a88', '#c87b7e', '#db7d74','#ed7e69', '#db7d74','#c87b7e','#b67a88','#a47993','#92789e','#8077a8','#6d75b3', ]
       }],
@@ -163,5 +182,8 @@ Pictures.displayChart = function () {
   });
 };
 
+
+
 Pictures.generateImageArrays();
 Pictures.renderPictures();
+Pictures.renderResults();
