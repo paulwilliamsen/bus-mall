@@ -108,8 +108,11 @@ Pictures.renderPictures = function () {
     Pictures.imageThree.removeEventListener('click', Pictures.renderPictures);
 
     Pictures.updateVotes();
+    Pictures.renderResults();
+
   }
   Pictures.displayChart();
+
 };
 
 Pictures.updateVotes = function () {
@@ -136,11 +139,12 @@ Pictures.imageThree.addEventListener('click', Pictures.renderPictures);
 Pictures.renderResults = function() {
   var header = document.getElementById('results-header');
   var ulEl = document.getElementById('results');
-  header.textContent = 'Results';
+  // header.textContent = 'Results';    <----- for some reason, this is removing the ul from the section. I would try adding a h2 or something to the section above the ul and then change the content of the h2, rather than changing the text content of the section itself.
 
-  for (var i = 0; i < Pictures.allImagesArray.length; i++) {
-    var thisImage = Pictures.allImagesArray[i];
+  for (var i = 0; i < Pictures.allPicturesArray.length; i++) {
+    var thisImage = Pictures.allPicturesArray[i];
     var liEl = document.createElement('li');
+    liEl.textContent = 'needs something here'; // using thisImage variable to get the content from the array
     ulEl.appendChild(liEl);
     Pictures.allVotes.push(thisImage);
   }
@@ -186,4 +190,3 @@ Pictures.displayChart = function () {
 
 Pictures.generateImageArrays();
 Pictures.renderPictures();
-Pictures.renderResults();
