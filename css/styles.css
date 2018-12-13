@@ -1,4 +1,44 @@
 body {
   color: white;
-  background-color: green;
+  background-color: black;
 }
+header {
+  /* position: absolute; */
+  background: black;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  margin: 0px 0px;
+
+}
+h1 {
+  font-family: 'Libre Barcode 128 Text', cursive;
+  color: white;
+  text-align: center;
+  font-size: 135pt;
+  margin-top: 50px;
+}
+main {
+display: block;
+  max-width: 1200px;
+}  
+img {
+  padding: 20px;
+  height: 300px;;
+  width: 300px;
+}
+
+
+#images {
+  padding-top: 50px;
+  /* text-align: center; */
+}
+.pictures {
+  border: 10px solid white;
+  width: 29%;
+  float: right;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
