@@ -17,6 +17,7 @@ h1 {
   text-align: center;
   font-size: 135pt;
   margin-top: 50px;
+  margin-bottom: -50px;
 }
 main {
 display: block;
@@ -27,6 +28,7 @@ img {
   height: 300px;;
   width: 300px;
 }
+
 
 
 #images {
@@ -42,3 +44,16 @@ img {
   margin-right: auto;
 }
 
+#results-header {
+  font-family: 'Libre Barcode 128 Text', cursive;
+  font-size: 75px;
+  padding-left: 20px;
+}
+h2 {
+  font-size: 15px;
+  list-style: none;
+  padding-left: 20px;
+}
+li {
+  padding-bottom: 10px;
+}

@@ -4,6 +4,7 @@ Pictures.imageOne = document.getElementById('first');
 Pictures.imageTwo = document.getElementById('second');
 Pictures.imageThree = document.getElementById('third');
 Pictures.chart = document.getElementById('chart');
+Pictures.button = document.getElementById('instructions');
 Pictures.clickCounter = 0;
 
 Pictures.allPicturesArray = [];
@@ -24,26 +25,26 @@ function Pictures(filepath, description) {
   Pictures.allPicturesArray.push(this);
 }
 
-Pictures.bag = new Pictures('img/bag.jpg', 'bag');
-Pictures.banana = new Pictures('img/banana.jpg', 'banana');
-Pictures.bathroom = new Pictures('img/bathroom.jpg', 'bathroom');
-Pictures.boots = new Pictures('img/boots.jpg', 'boots');
-Pictures.breakfast = new Pictures('img/breakfast.jpg', 'breakfast');
-Pictures.bubblegum = new Pictures('img/bubblegum.jpg', 'bubblegum');
-Pictures.chair = new Pictures('img/chair.jpg', 'chair');
-Pictures.cthulhu = new Pictures('img/cthulhu.jpg', 'cthulhu');
-Pictures.dogDuck = new Pictures('img/dog-duck.jpg', 'dog-duck');
-Pictures.dragon = new Pictures('img/dragon.jpg', 'dragon');
-Pictures.pen = new Pictures('img/pen.jpg', 'pen');
-Pictures.petSweet = new Pictures('img/pet-sweep.jpg', 'pet-sweep');
-Pictures.scissors = new Pictures('img/scissors.jpg', 'scissors');
-Pictures.shark = new Pictures('img/shark.jpg', 'shark');
-Pictures.sweep = new Pictures('img/sweep.png', 'sweep');
-Pictures.tauntaun = new Pictures('img/tauntaun.jpg', 'tauntaun');
-Pictures.unicorn = new Pictures('img/unicorn.jpg', 'unicorn');
-Pictures.usb = new Pictures('img/usb.gif', 'usb');
-Pictures.waterCan = new Pictures('img/water-can.jpg', 'water-can');
-Pictures.wineGlass = new Pictures('img/wine-glass.jpg', 'wine-glass');
+Pictures.bag = new Pictures('img/bag.jpg', 'The out of this world bag');
+Pictures.banana = new Pictures('img/banana.jpg', 'The random banana slicer product');
+Pictures.bathroom = new Pictures('img/bathroom.jpg', 'The useful bathroom product');
+Pictures.boots = new Pictures('img/boots.jpg', 'The unfunctional boots product ');
+Pictures.breakfast = new Pictures('img/breakfast.jpg', 'The random breakfast product');
+Pictures.bubblegum = new Pictures('img/bubblegum.jpg', 'The nasty bubblegum product');
+Pictures.chair = new Pictures('img/chair.jpg', 'The comfy chair');
+Pictures.cthulhu = new Pictures('img/cthulhu.jpg', 'The cthulhu product');
+Pictures.dogDuck = new Pictures('img/dog-duck.jpg', 'The favorite duck-dog');
+Pictures.dragon = new Pictures('img/dragon.jpg', 'The fake dragon stuff');
+Pictures.pen = new Pictures('img/pen.jpg', 'The delicate pen');
+Pictures.petSweet = new Pictures('img/pet-sweep.jpg', 'The pet-sweep');
+Pictures.scissors = new Pictures('img/scissors.jpg', 'The pizza scissors');
+Pictures.shark = new Pictures('img/shark.jpg', 'The little shark');
+Pictures.sweep = new Pictures('img/sweep.png', 'The baby sweep');
+Pictures.tauntaun = new Pictures('img/tauntaun.jpg', 'The cozy tauntaun');
+Pictures.unicorn = new Pictures('img/unicorn.jpg', 'The magic unicorn meat');
+Pictures.usb = new Pictures('img/usb.gif', 'The underwater usb');
+Pictures.waterCan = new Pictures('img/water-can.jpg', 'The improbable water-can');
+Pictures.wineGlass = new Pictures('img/wine-glass.jpg', 'Just give me the bottle instead wine-glass');
 
 Pictures.randomNum = function () {
   var random = Math.random() * Pictures.allPicturesArray.length;
@@ -98,21 +99,20 @@ Pictures.renderPictures = function () {
 
   Pictures.clickCounter++;
 
-  if(Pictures.clickCounter > 1) { // refactor this
+  if (Pictures.clickCounter > 1) {
     Pictures.handleClick();
   }
 
-  if (Pictures.clickCounter === 25) {
+  if (Pictures.clickCounter === 2) {
     Pictures.imageOne.removeEventListener('click', Pictures.renderPictures);
     Pictures.imageTwo.removeEventListener('click', Pictures.renderPictures);
     Pictures.imageThree.removeEventListener('click', Pictures.renderPictures);
 
     Pictures.updateVotes();
     Pictures.renderResults();
+    Pictures.displayChart();
 
   }
-  Pictures.displayChart();
-
 };
 
 Pictures.updateVotes = function () {
@@ -136,24 +136,21 @@ Pictures.imageThree.addEventListener('click', Pictures.renderPictures);
 
 
 
-Pictures.renderResults = function() {
+Pictures.renderResults = function () {
   var header = document.getElementById('results-header');
   var ulEl = document.getElementById('results');
-  // header.textContent = 'Results';    <----- for some reason, this is removing the ul from the section. I would try adding a h2 or something to the section above the ul and then change the content of the h2, rather than changing the text content of the section itself.
+  header.textContent = 'Results';
 
   for (var i = 0; i < Pictures.allPicturesArray.length; i++) {
     var thisImage = Pictures.allPicturesArray[i];
     var liEl = document.createElement('li');
-    liEl.textContent = 'needs something here'; // using thisImage variable to get the content from the array
+    liEl.textContent = `${thisImage.altText} was clicked ${thisImage.timesClicked} out of ${thisImage.timesDisplayed} times displayed.`;
     ulEl.appendChild(liEl);
-    Pictures.allVotes.push(thisImage);
+    Pictures.allVotes.push(this.allPicturesArray.timesClicked);
   }
 
 
 };
-
-
-
 
 Pictures.displayChart = function () {
   new Chart(Pictures.chart, {
@@ -161,9 +158,9 @@ Pictures.displayChart = function () {
     data: {
       labels: Pictures.allNames,
       datasets: [{
-        label: 'Votes Per Image', 
+        label: 'Votes Per Image',
         data: Pictures.allVotes,
-        backgroundColor: ['#126fe7', '#2470dd', '#3771d2', '#4973c7', '#5b74bd', '#6d75b3', '#8077a8', '#92789e', '#a47993', '#b67a88', '#c87b7e', '#db7d74','#ed7e69', '#db7d74','#c87b7e','#b67a88','#a47993','#92789e','#8077a8','#6d75b3', ]
+        backgroundColor: ['#126fe7', '#2470dd', '#3771d2', '#4973c7', '#5b74bd', '#6d75b3', '#8077a8', '#92789e', '#a47993', '#b67a88', '#c87b7e', '#db7d74', '#ed7e69', '#db7d74', '#c87b7e', '#b67a88', '#a47993', '#92789e', '#8077a8', '#6d75b3',]
       }],
     },
     options: {
@@ -190,3 +187,11 @@ Pictures.displayChart = function () {
 
 Pictures.generateImageArrays();
 Pictures.renderPictures();
+
+alert ('These are the instructions for the research. Please click the product you would buy out of the group of three, 25 times. Click ok to begin.');
+
+function myFunction() {
+  alert ('Instructions: Click the product you would buy out of the group of three, 25 times. Click ok to continue.');
+}
+
+Pictures.button.addEventListener('click',myFunction);
