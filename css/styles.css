@@ -20,7 +20,7 @@ h1 {
   margin-bottom: -50px;
 }
 main {
-display: block;
+  display: block;
   max-width: 1200px;
 }  
 img {
@@ -54,6 +54,7 @@ h2 {
   list-style: none;
   padding-left: 20px;
 }
-li {
-  padding-bottom: 10px;
+
+#instructions {
+padding: 12px;
 }

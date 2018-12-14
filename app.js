@@ -103,7 +103,7 @@ Pictures.renderPictures = function () {
     Pictures.handleClick();
   }
 
-  if (Pictures.clickCounter === 2) {
+  if (Pictures.clickCounter === 25) {
     Pictures.imageOne.removeEventListener('click', Pictures.renderPictures);
     Pictures.imageTwo.removeEventListener('click', Pictures.renderPictures);
     Pictures.imageThree.removeEventListener('click', Pictures.renderPictures);
@@ -153,7 +153,7 @@ Pictures.renderResults = function () {
 };
 
 Pictures.displayChart = function () {
-  new Chart(Pictures.chart, {
+  new Chart(Pictures.chart,  { //eslint-disable-line
     type: 'horizontalBar',
     data: {
       labels: Pictures.allNames,
